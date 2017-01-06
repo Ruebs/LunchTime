@@ -25,7 +25,7 @@
 }
 
 .tab-content {
-    background-color: white;
+    background-color: whitesmoke;
     padding: 5px 5px;
     border-color: #e7e7e7;
 }
@@ -94,6 +94,82 @@
     margin-right: -30px;
 }
 
+/* vote.html */
+.vote-wrap {
+    max-width: 1270px;
+    min-width: 770px;
+    margin: auto;
+}
+
+.lunch-row {
+    padding: 5px;
+}
+
+.lunch-option img, .lunch-option {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.lunch-option {
+    background-color: white; 
+    float: left;
+    position: relative;
+    margin: 10px;
+    width: 230px;
+    height: 230px;
+}
+
+.lunch-option:hover {
+    transform: scale(1.1);
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.lunch-option.selected {
+    border: 3px solid green;
+}
+
+.lunch-description {
+    position: absolute;
+    text-align: center;
+    color: white;
+    padding: 7px;
+    height: 30%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.35);
+}
+
+.lunch-option span {
+    padding-top: 1.5px;
+    border: 2px solid white;
+    font-size: 400%;
+    color: green;
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background-color: white;
+    border-radius: 100%;
+    box-shadow: rgba(0,0,0,0.35);
+}
+
+.lunch-option span::before {
+}
+
+.lunch-description .title {
+    text-shadow: 2px 3px 1px #000;
+    font-weight: bold;
+}
+
+.lunch-description .subtitle {
+    background-color: rgba(0,0,0,.5);
+}
+
+.lunch-option img {
+    width: 100%;
+    height: 100%;
+}
 
 /* Spinner */
 

@@ -1,16 +1,24 @@
-<h3 style="padding-left: 50px;">Select the option(s) that you would like to have for lunch:</h3>
-<input style="margin-left: 100px;" type="button" ng-click="submitVotes()" value="Submit Votes"></input>
-<div style="padding: 20px 0px 50px 100px; width: 400px;">
-    <div ng-if="emailVerified === false" style="font-weight: bold;">Your email has not yet been verified. Please check your email and click the verification link. Then logout and log back in.</div>
-    <a ng-if="emailVerified === false" ng-click="sendVerificationEmail()" style="cursor: pointer;">I did not get a verification email.</a>
-    <div style="padding-bottom: 5px;" ng-repeat="lunchSource in lunchSourcesArr | orderBy:'value.LastOrdered'">
-        <div ng-style="{'background-color': lunchSource.value.Votes[uid] ? '#69c22c' : 'white'}" style="cursor: pointer; display: flex; border-radius: 13px;" ng-click="vote(lunchSource.key, lunchSource.value)">
-            <img style="padding-right: 10px; margin: 2px 0px 2px 15px;" width="75" height="75" ng-src="{{lunchSource.value.Logo}}"></img>
-            <div>
-                <div style="font-weight: bold; padding-top: 20px;">{{lunchSource.key}}</div>
-                <div ng-if="lunchSource.value.LastOrdered > 0">({{lunchSource.value.LastOrdered.substr(4,2)}}/{{lunchSource.value.LastOrdered.substr(6,2)}}/{{lunchSource.value.LastOrdered.substr(0,4)}})</div>
-                <div ng-if="lunchSource.value.LastOrdered == 0">(Hasn't Won Yet)</div>
+<div ng-if="emailVerified === false">
+    <div style="font-weight: bold;">Your email has not yet been verified. Please check your email and click the verification link. Then logout and log back in.</div>
+    <a ng-click="sendVerificationEmail()" style="cursor: pointer;">I did not get a verification email.</a>
+</div>
+
+<div ng-if="emailVerified === true" class="vote-wrap text-center">
+    <h2>Time to vote!</h2>
+    <h3>Select the option(s) that you would like to have for lunch:</h3>
+
+    <div class="clearfix lunch-row">
+        <div class="lunch-row clearfix">
+            <div class="lunch-option" ng-class="{selected:lunchSource.value.Votes[uid]}" ng-click="vote(lunchSource.key, lunchSource.value)" ng-repeat="lunchSource in lunchSourcesArr | orderBy:'value.LastOrdered'">
+                <span ng-show="lunchSource.value.Votes[uid]" class="glyphicon glyphicon-ok-circle"></span>
+                <img ng-src="{{lunchSource.value.Logo}}">
+                <div class="lunch-description">
+                    <h4 class="title">{{lunchSource.key}}</h4>
+                    <div class="subtitle" ng-if="lunchSource.value.LastOrdered > 0">({{lunchSource.value.LastOrdered.substr(4,2)}}/{{lunchSource.value.LastOrdered.substr(6,2)}}/{{lunchSource.value.LastOrdered.substr(0,4)}})</div>
+                    <div class="subtitle" ng-if="lunchSource.value.LastOrdered == 0">(Hasn't Won Yet)</div>
+                </div>
             </div>
         </div>
     </div>
+    <input class="btn btn-lg btn-primary" type="button" ng-click="submitVotes()" value="Submit Votes"></input>
 </div>

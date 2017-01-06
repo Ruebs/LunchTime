@@ -1,0 +1,127 @@
+.hide-overflow {
+    overflow: hidden;
+}
+
+.loading-canvas {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    color: whitesmoke;
+}
+
+.login input {
+    margin: 10px 0;
+}
+
+.nav-tabs {
+    cursor: pointer;
+}
+
+.tab-content {
+    background-color: white;
+    padding: 5px 5px;
+    border-color: #e7e7e7;
+}
+
+.tab-content legend {
+    border-radius: 3px;
+    background: #eee;
+    padding: 7px 20px;
+    border: 1px solid #e7e7e7;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+}
+
+
+/* preload transition */
+
+.loaded {
+    -webkit-transform: translateX(-150%);
+    /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: translateX(-150%);
+    /* IE 9 */
+    transform: translateX(-150%);
+    /* Firefox 16+, IE 10+, Opera */
+    /*opacity: 0;*/
+    -webkit-transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+}
+
+.waiting {
+    -webkit-transform: translateX(100%);
+    /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: translateX(100%);
+    /* IE 9 */
+    transform: translateX(100%);
+    /* Firefox 16+, IE 10+, Opera */
+}
+
+.finished {
+    -webkit-transform: translateX(0);
+    /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: translateX(0);
+    /* IE 9 */
+    transform: translateX(0);
+    /* Firefox 16+, IE 10+, Opera */
+    -webkit-transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+}
+
+.logo-text {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 160%;
+}
+
+.logo-image {
+    width: 100%;
+    text-align: center;
+    margin-right: -30px;
+}
+
+
+/* Spinner */
+
+.spinner {
+    font-size: 150%;
+    text-align: center;
+    margin: 20px;
+}
+
+.spinner>span {
+    animation: spin .85s infinite linear;
+    -webkit-animation: spin2 .85s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}

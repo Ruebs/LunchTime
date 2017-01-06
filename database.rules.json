@@ -1,0 +1,16 @@
+{
+    "rules": {
+        ".read": "auth != null && auth.token.email_verified == true",
+        ".write": "auth != null && auth.token.email_verified == true && (auth.uid === '39QJFGuGPJcHTbWdXcHJNdjm9G93' || auth.uid === 'nnxIliPytTVv4GByuTN4gkJTq0L2' || auth.uid === 'uZVyqWskGneWmTdv71ZE7iNwdPg2')",
+        "LunchSources": {
+            "$option": {
+                "Votes": {
+                    "$uid": {
+                        ".write": "auth != null && auth.token.email_verified == true",
+                        ".validate": "$uid === auth.uid"
+                    }
+                }
+            }
+        }
+    }
+}

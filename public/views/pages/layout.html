@@ -1,0 +1,44 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-options" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+            <a class="navbar-brand" href="">LunchTime</a>
+            <span style="padding-left: 200px; line-height: 3; font-weight: bold;">Latest Winner: {{thisWeeksWinner}}</span>
+        </div>
+
+        <div class="collapse navbar-collapse" id="nav-options">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <li role="separator" class="divider"></li>
+                    <li><a ng-click="logout()" href="#">Logout ({{user.email}})</a></li>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div>
+        <ul class="nav nav-tabs">
+            <li ng-class="{active: tabs.active==tabs.all[0]}" ng-click="setActiveTab(0)"><a title="Vote">Vote</a></li>
+            <li ng-if="isAdmin" ng-class="{active: tabs.active==tabs.all[1]}" ng-click="setActiveTab(1)"><a title="Results">Results</a></li>
+            <li ng-if="isAdmin" ng-class="{active: tabs.active==tabs.all[2]}" ng-click="setActiveTab(2)"><a title="Manage">Manage</a></li>
+        </ul>
+    </div>
+
+    <div class="tab-content clearfix">
+        <div class="tab-pane fade" ng-class="{in: tabs.active==tabs.all[0], active: tabs.active==tabs.all[0]}" id="vote">
+            <div ng-include="'views/partials/vote.html'"></div>
+        </div>
+        <div ng-if="isAdmin" class="tab-pane fade" ng-class="{in: tabs.active==tabs.all[1], active: tabs.active==tabs.all[1]}" id="results">
+            <div ng-include="'views/partials/results.html'"></div>
+        </div>
+        <div ng-if="isAdmin" class="tab-pane fade" ng-class="{in: tabs.active==tabs.all[2], active: tabs.active==tabs.all[2]}" id="manage">
+            <div ng-include="'views/partials/manage.html'"></div>
+        </div>
+    </div>
+
+</nav>

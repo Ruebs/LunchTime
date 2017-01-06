@@ -1,0 +1,16 @@
+<h3 style="padding-left: 50px;">Select the option(s) that you would like to have for lunch:</h3>
+<input style="margin-left: 100px;" type="button" ng-click="submitVotes()" value="Submit Votes"></input>
+<div style="padding: 20px 0px 50px 100px; width: 400px;">
+    <div ng-if="emailVerified === false" style="font-weight: bold;">Your email has not yet been verified. Please check your email and click the verification link. Then logout and log back in.</div>
+    <a ng-if="emailVerified === false" ng-click="sendVerificationEmail()" style="cursor: pointer;">I did not get a verification email.</a>
+    <div style="padding-bottom: 5px;" ng-repeat="lunchSource in lunchSourcesArr | orderBy:'value.LastOrdered'">
+        <div ng-style="{'background-color': lunchSource.value.Votes[uid] ? '#69c22c' : 'white'}" style="cursor: pointer; display: flex; border-radius: 13px;" ng-click="vote(lunchSource.key, lunchSource.value)">
+            <img style="padding-right: 10px; margin: 2px 0px 2px 15px;" width="75" height="75" ng-src="{{lunchSource.value.Logo}}"></img>
+            <div>
+                <div style="font-weight: bold; padding-top: 20px;">{{lunchSource.key}}</div>
+                <div ng-if="lunchSource.value.LastOrdered > 0">({{lunchSource.value.LastOrdered.substr(4,2)}}/{{lunchSource.value.LastOrdered.substr(6,2)}}/{{lunchSource.value.LastOrdered.substr(0,4)}})</div>
+                <div ng-if="lunchSource.value.LastOrdered == 0">(Hasn't Won Yet)</div>
+            </div>
+        </div>
+    </div>
+</div>

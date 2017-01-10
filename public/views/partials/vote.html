@@ -13,7 +13,7 @@
 
     <div class="clearfix lunch-row">
         <div class="lunch-row clearfix">
-            <div class="lunch-option" ng-class="{selected:lunchSource.value.Votes[uid]}" ng-click="vote(lunchSource.key, lunchSource.value)" ng-repeat="lunchSource in lunchSourcesArr | orderBy:'value.LastOrdered'">
+            <div class="lunch-option" ng-class="{selectable:$index < lunchSourcesArr.length - 4 || lunchSource.value.LastOrdered == 0,selected:lunchSource.value.Votes[uid]}" ng-click="vote(lunchSource.key, lunchSource.value, $index < lunchSourcesArr.length - 4)" ng-repeat="lunchSource in lunchSourcesArr | orderBy:'value.LastOrdered'">
                 <span ng-show="lunchSource.value.Votes[uid]" class="glyphicon glyphicon-ok-circle"></span>
                 <img ng-src="{{lunchSource.value.Logo}}">
                 <div class="lunch-description">

@@ -39,6 +39,8 @@ lunchtimeApp.controller('mainController', ['$scope', '$firebaseObject', '$fireba
                     $scope.lunchSourcesArr.push({ key, value });
                 });
             }
+        }, function (error) {
+            $scope.emailVerified = false; 
         });
         $scope.$apply();
 
@@ -61,6 +63,10 @@ lunchtimeApp.controller('mainController', ['$scope', '$firebaseObject', '$fireba
 
         }, 1200);
     }
+
+    $scope.continue = function () {
+        $scope.logout();
+    };
 
     function validateUserPassword(user, password) {
         if (!user || user.indexOf('@') < 1 || user.indexOf('.') < 1) {

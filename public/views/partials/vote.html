@@ -1,6 +1,10 @@
-<div ng-if="emailVerified === false">
-    <div style="font-weight: bold;">Your email has not yet been verified. Please check your email and click the verification link. Then logout and log back in.</div>
+<div ng-if="emailVerified === false" class="vote-wrap text-center">
+    <h2>Please verify your email</h2>
+    <p style="font-weight: bold;">Your email has not yet been verified.</p>
+    <p>Please check your email and click the verification link, then click continue and <strong>login again.</strong></p>
     <a ng-click="sendVerificationEmail()" style="cursor: pointer;">I did not get a verification email.</a>
+    <br><br>
+    <input class="btn btn-lg btn-primary" type="button" ng-click="continue()" value="Continue"></input>
 </div>
 
 <div ng-if="emailVerified === true" class="vote-wrap text-center">

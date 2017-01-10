@@ -195,7 +195,7 @@ lunchtimeApp.controller('mainController', ['$scope', '$firebaseObject', '$fireba
             var day = today.getDate();
             if (day < 10) { day = '0' + day; }
 
-            if (max.LastOrdered) {
+            if (max.value.LastOrdered) {
                 FirebaseService.getRef('LunchSources/' + max.key + '/LastOrdered').set(year + '' + month + '' + day);
             }
 

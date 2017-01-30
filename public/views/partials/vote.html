@@ -11,11 +11,14 @@
     <h2>Time to vote!</h2>
     <h3>Select the option(s) that you would like to have for lunch:</h3>
 
+    <h5 ng-if="premiumOnCooldown()">(Options in red are locked out "premium" options. Only one premium option may be chosen per month.)</h5>
+
     <div class="clearfix lunch-row">
         <div class="lunch-row clearfix">
-            <div class="lunch-option" ng-class="{selectable:$index < lunchSourcesArr.length - 4 || lunchSource.value.LastOrdered == 0,selected:lunchSource.value.Votes[uid]}" ng-click="vote(lunchSource.key, lunchSource.value, $index < lunchSourcesArr.length - 4)" ng-repeat="lunchSource in lunchSourcesArr | orderBy:'value.LastOrdered'">
+            <div class="lunch-option" ng-class="{selectable:($index < lunchSourcesArr.length - 4 || lunchSource.value.LastOrdered == 0) && (!lunchSource.value.Premium || !premiumOnCooldown()),selected:lunchSource.value.Votes[uid],lockedout:lunchSource.value.Premium && premiumOnCooldown()}"
+                ng-click="vote(lunchSource.key, lunchSource.value, $index < lunchSourcesArr.length - 4)" ng-repeat="lunchSource in lunchSourcesArr">
                 <span ng-show="lunchSource.value.Votes[uid]" class="glyphicon glyphicon-ok-circle"></span>
-                <img ng-src="{{lunchSource.value.Logo}}">
+                <img ng-class="{lockedoutimg:lunchSource.value.Premium && premiumOnCooldown()}" ng-src="{{lunchSource.value.Logo}}">
                 <div class="lunch-description">
                     <h4 class="title">{{lunchSource.key}}</h4>
                     <div class="subtitle" ng-if="lunchSource.value.LastOrdered > 0">({{lunchSource.value.LastOrdered.substr(4,2)}}/{{lunchSource.value.LastOrdered.substr(6,2)}}/{{lunchSource.value.LastOrdered.substr(0,4)}})</div>
